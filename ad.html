@@ -4,183 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="클릭, 다운로드, 짧은 참여처럼 가벼운 요청을 필요한 참여와 연결하는 틈틈 Ad+" />
-  <title>틈틈 Ad+ | 가볍게 올리는 작은 요청</title>
+  <title>틈틈 Ad+ | 처음의 반응을 가볍게 요청하세요</title>
   <style>
-    :root { --black: #111; --white: #fff; --gray: #666; --line: #111; --max-width: 1120px; }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--black); background: var(--white); font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.55; word-break: keep-all; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(calc(100% - 40px), var(--max-width)); margin: 0 auto; }
-    .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.97); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 20px; }
-    .brand { font-size: 22px; font-weight: 800; letter-spacing: -.06em; }
-    .header-right { display: flex; align-items: center; gap: 16px; }
-    .back-link { font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--black); background: var(--white); font-size: 15px; font-weight: 700; }
-    .button:hover, .button:focus-visible { color: var(--white); background: var(--black); }
-    .button.primary { color: var(--white); background: var(--black); }
-    .button.primary:hover, .button.primary:focus-visible { color: var(--black); background: var(--white); }
-    .eyebrow, .section-label, .card-number { margin: 0; color: var(--gray); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-
-    .hero { min-height: calc(100vh - 65px); display: flex; align-items: center; padding: 82px 0; border-bottom: 1px solid var(--line); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: 62px; align-items: end; }
-    h1 { max-width: 850px; margin: 18px 0 0; font-size: clamp(48px, 7vw, 84px); line-height: 1.01; letter-spacing: -.09em; }
-    .hero-copy { max-width: 620px; margin: 28px 0 0; font-size: 19px; }
-    .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-    .hero-panel { padding: 24px; border: 1px solid var(--line); }
-    .hero-panel h2 { margin: 0; font-size: 16px; }
-    .hero-panel ol { margin: 18px 0 0; padding: 0; border-top: 1px solid var(--line); list-style: none; counter-reset: item; }
-    .hero-panel li { position: relative; padding: 13px 0 13px 38px; border-bottom: 1px solid var(--line); font-size: 14px; }
-    .hero-panel li::before { position: absolute; left: 0; color: var(--gray); content: "0" counter(item); counter-increment: item; font-weight: 700; }
-
-    .section { padding: 96px 0; border-bottom: 1px solid var(--line); }
-    .section-title { max-width: 800px; margin: 16px 0 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.13; letter-spacing: -.065em; }
-    .section-description { max-width: 720px; margin: 24px 0 0; color: #333; font-size: 18px; }
-    .actions { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 46px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-    .action { min-height: 190px; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .action h3 { margin: 40px 0 8px; font-size: 21px; letter-spacing: -.05em; }
-    .action p { margin: 0; color: #444; font-size: 14px; }
-
-    .split-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; align-items: start; }
-    .side { position: sticky; top: 110px; }
-    .numbered-flow { border-top: 1px solid var(--line); }
-    .flow-item { display: grid; grid-template-columns: 72px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-    .flow-item .number { color: var(--gray); font-size: 14px; font-weight: 700; }
-    .flow-item h3 { margin: 0; font-size: 23px; letter-spacing: -.05em; }
-    .flow-item p { margin: 8px 0 0; color: #444; }
-
-    .campaign-demo { margin-top: 38px; border: 1px solid var(--line); }
-    .demo-head { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 700; }
-    .demo-body { padding: 20px; }
-    .field { padding: 14px 0; border-bottom: 1px solid #bbb; }
-    .field:last-child { border-bottom: 0; }
-    .field-label { display: block; margin-bottom: 5px; color: var(--gray); font-size: 12px; font-weight: 700; }
-    .field-value { font-size: 16px; font-weight: 700; }
-    .demo-footer { padding: 16px 20px; border-top: 1px solid var(--line); background: var(--black); color: var(--white); font-size: 14px; font-weight: 700; }
-
-    .principles { margin: 46px 0 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
-    .principles li { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 21px 0; border-bottom: 1px solid var(--line); }
-    .principles strong { font-size: 17px; }
-    .principles span { color: #444; }
-    .cta { color: var(--white); background: var(--black); }
-    .cta .section-label, .cta .section-description { color: #ddd; }
-    .cta .button { color: var(--white); border-color: var(--white); background: var(--black); }
-    .cta .button:hover, .cta .button:focus-visible { color: var(--black); background: var(--white); }
-    .cta .button.primary { color: var(--black); background: var(--white); }
-    .cta .button.primary:hover, .cta .button.primary:focus-visible { color: var(--white); background: var(--black); }
-    footer { padding: 28px 0; color: var(--gray); font-size: 13px; }
-
-    @media (max-width: 720px) {
-      .hero, .section { padding: 64px 0; }
-      .hero { min-height: auto; }
-      .hero-grid, .actions, .split-layout { grid-template-columns: 1fr; }
-      .hero-grid { gap: 34px; }
-      .action { min-height: 0; }
-      .action h3 { margin-top: 28px; }
-      .side { position: static; }
-      .split-layout { gap: 42px; }
-      .principles li { grid-template-columns: 1fr; gap: 7px; }
-    }
+    :root { --black: #111; --white: #fff; --gray: #686868; --soft: #f1f1ef; --line: #111; --max-width: 1240px; }
+    * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; color: var(--black); background: var(--white); font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.5; word-break: keep-all; } a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 48px), var(--max-width)); margin: 0 auto; } .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.95); backdrop-filter: blur(10px); } .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 20px; } .brand { font-size: 22px; font-weight: 800; letter-spacing: -.08em; } .header-right { display: flex; align-items: center; gap: 18px; } .back-link { font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+    .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid var(--black); background: var(--white); font-size: 14px; font-weight: 700; transition: .2s ease; } .button:hover, .button:focus-visible { color: var(--white); background: var(--black); } .button.primary { color: var(--white); background: var(--black); } .button.primary:hover, .button.primary:focus-visible { color: var(--black); background: var(--white); }
+    .eyebrow, .section-label, .number { margin: 0; color: var(--gray); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .hero { min-height: calc(100svh - 65px); display: grid; grid-template-columns: 1.05fr .95fr; border-bottom: 1px solid var(--line); } .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 12vh 7vw 12vh max(24px, calc((100vw - var(--max-width)) / 2)); } h1 { max-width: 710px; margin: 18px 0 0; font-size: clamp(54px, 7.2vw, 104px); line-height: .96; letter-spacing: -.1em; } .lead { max-width: 520px; margin: 32px 0 0; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.55; } .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+    .visual-placeholder { position: relative; overflow: hidden; color: var(--white); background: var(--black); } .visual-placeholder::before { position: absolute; inset: 11%; border: 1px solid rgba(255,255,255,.55); content: ""; } .visual-placeholder::after { position: absolute; right: -12%; bottom: -16%; width: 76%; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; content: ""; } .placeholder-copy { position: relative; z-index: 1; display: flex; height: 100%; min-height: 420px; flex-direction: column; justify-content: space-between; padding: 30px; } .placeholder-copy strong { max-width: 310px; font-size: clamp(25px, 3vw, 43px); line-height: 1; letter-spacing: -.08em; } .placeholder-copy span { max-width: 280px; color: #d5d5d5; font-size: 12px; line-height: 1.5; }
+    .section { padding: clamp(96px, 13vw, 180px) 0; border-bottom: 1px solid var(--line); } .section-title { max-width: 880px; margin: 16px 0 0; font-size: clamp(40px, 5.8vw, 76px); line-height: 1.04; letter-spacing: -.09em; } .section-description { max-width: 680px; margin: 25px 0 0; color: #333; font-size: 18px; }
+    .statement { display: grid; min-height: 70vh; place-items: center; text-align: center; } .statement h2 { max-width: 1040px; margin: 20px 0; font-size: clamp(44px, 6.4vw, 90px); line-height: 1.02; letter-spacing: -.1em; } .statement p { max-width: 530px; margin: 0; color: #333; font-size: 18px; }
+    .actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 56px; border: 1px solid var(--line); background: var(--black); } .action { min-height: 270px; padding: 24px; background: var(--white); } .action h3 { margin: 64px 0 8px; font-size: 28px; letter-spacing: -.07em; } .action p { max-width: 330px; margin: 0; color: #444; font-size: 15px; }
+    .flow-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 9vw; align-items: start; } .flow-intro { position: sticky; top: 110px; } .flow-intro h2 { margin: 16px 0 0; font-size: clamp(42px, 5.2vw, 66px); line-height: 1.04; letter-spacing: -.09em; } .flow-list { border-top: 1px solid var(--line); } .flow-item { display: grid; grid-template-columns: 68px 1fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--line); } .flow-item h3 { margin: 0; font-size: 23px; letter-spacing: -.06em; } .flow-item p { margin: 8px 0 0; color: #444; }
+    .request-card { margin-top: 36px; border: 1px solid var(--line); } .request-card header { display: flex; justify-content: space-between; gap: 20px; padding: 16px 19px; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 800; } .request-card div { padding: 18px 19px; border-bottom: 1px solid #aaa; } .request-card div:last-child { border-bottom: 0; color: var(--white); background: var(--black); } .request-card span { display: block; color: var(--gray); font-size: 11px; font-weight: 800; letter-spacing: .08em; } .request-card strong { display: block; margin-top: 5px; font-size: 16px; }
+    .principle-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 9vw; align-items: center; } .principle-layout .visual-placeholder { min-height: 590px; } .principles { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; } .principles li { padding: 25px 0; border-bottom: 1px solid var(--line); } .principles strong { display: block; font-size: 21px; letter-spacing: -.05em; } .principles span { display: block; margin-top: 7px; color: #444; }
+    .cta { color: var(--white); background: var(--black); } .cta .section-label, .cta .section-description { color: #d0d0d0; } .cta h2 { max-width: 920px; margin: 16px 0 0; font-size: clamp(46px, 6vw, 82px); line-height: 1.01; letter-spacing: -.1em; } .cta .button { color: var(--white); border-color: var(--white); background: var(--black); } .cta .button:hover { color: var(--black); background: var(--white); } .cta .primary { color: var(--black); background: var(--white); } footer { padding: 25px 0; color: var(--gray); font-size: 12px; }
+    @media (max-width: 760px) { .container { width: min(calc(100% - 32px), var(--max-width)); } .back-link { display: none; } .hero, .flow-layout, .principle-layout { grid-template-columns: 1fr; } .hero-copy { min-height: 66svh; padding: 70px 16px; } .hero .visual-placeholder { min-height: 400px; } .statement { min-height: 60vh; } .actions { grid-template-columns: 1fr; } .flow-intro { position: static; } .principle-layout .visual-placeholder { min-height: 410px; } }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">틈틈</a>
-      <div class="header-right">
-        <a class="back-link" href="./index.html">일반 요청으로 돌아가기</a>
-        <a class="button primary" href="#start">작은 요청 올리기</a>
-      </div>
-    </div>
-  </header>
-
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="./index.html">틈틈</a><div class="header-right"><a class="back-link" href="./index.html">일반 요청으로 돌아가기</a><a class="button primary" href="#start">작은 요청 올리기</a></div></div></header>
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">AD+ / SMALL REQUESTS</p>
-          <h1>클릭 한 번,<br />다운로드 한 번.</h1>
-          <p class="hero-copy">새로 만든 링크를 한 번 봐줄 사람, 파일을 한 번 받아볼 사람, 작은 소식에 참여해 줄 사람이 필요할 때. Ad+는 짧고 분명한 요청을 필요한 참여와 연결합니다.</p>
-          <div class="button-row"><a class="button primary" href="#how">어떻게 진행되나요?</a></div>
-        </div>
-        <aside class="hero-panel" aria-label="작은 요청 진행 흐름">
-          <h2>작은 요청은 짧게.</h2>
-          <ol>
-            <li>요청할 일과 조건을 적습니다.</li>
-            <li>가능한 사람이 요청을 확인합니다.</li>
-            <li>완료된 참여와 진행 현황을 확인합니다.</li>
-          </ol>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="actions">
-      <div class="container">
-        <p class="section-label">01 / Small requests</p>
-        <h2 class="section-title">작은 요청을,<br />가볍게 올리세요.</h2>
-        <p class="section-description">링크 한 번, 파일 한 번, 짧은 참여 한 번. 필요한 일을 고르고 조건을 정하면, 가능한 사람이 내용을 확인한 뒤 가볍게 참여합니다.</p>
-        <div class="actions">
-          <article class="action"><p class="card-number">REQUEST 01</p><h3>링크 한 번 보기</h3><p>새로 만든 페이지나 콘텐츠를 한 번 확인해 줄 사람이 필요할 때.</p></article>
-          <article class="action"><p class="card-number">REQUEST 02</p><h3>파일 한 번 받아보기</h3><p>앱, 자료, 파일을 직접 받아보고 시작해 줄 사람이 필요할 때.</p></article>
-          <article class="action"><p class="card-number">REQUEST 03</p><h3>소식 받아보기</h3><p>관심 있는 채널이나 계정을 가볍게 연결하고 싶을 때.</p></article>
-          <article class="action"><p class="card-number">REQUEST 04</p><h3>작은 참여 남기기</h3><p>체험, 신청, 설문, 이벤트처럼 짧은 참여가 필요할 때.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="how">
-      <div class="container split-layout">
-        <div class="side">
-          <p class="section-label">02 / Post a request</p>
-          <h2 class="section-title">한 번 올리고,<br />가볍게 연결합니다.</h2>
-          <p class="section-description">복잡한 설정 없이 요청할 일과 조건만 짧게 남기세요. 링크, 파일, 작은 소식처럼 지금 필요한 도움을 필요한 만큼만 요청할 수 있습니다.</p>
-          <div class="button-row"><a class="button primary" href="#start">작은 요청 올리기</a></div>
-        </div>
-        <div>
-          <div class="numbered-flow">
-            <article class="flow-item"><span class="number">01</span><div><h3>요청할 일을 고릅니다.</h3><p>링크 확인, 파일 받기, 소식 연결, 간단 참여 중 필요한 일을 고릅니다.</p></div></article>
-            <article class="flow-item"><span class="number">02</span><div><h3>한 줄 설명과 조건을 남깁니다.</h3><p>링크 또는 파일과 함께, 참여에 필요한 내용을 짧게 적습니다.</p></div></article>
-            <article class="flow-item"><span class="number">03</span><div><h3>가능한 사람과 연결됩니다.</h3><p>조건에 맞는 사람이 요청을 확인하고 참여합니다.</p></div></article>
-            <article class="flow-item"><span class="number">04</span><div><h3>완료된 참여를 확인합니다.</h3><p>요청의 진행 상황과 완료 여부를 한곳에서 봅니다.</p></div></article>
-          </div>
-          <div class="campaign-demo" aria-label="작은 요청 예시">
-            <div class="demo-head"><span>작은 요청 예시</span><span>1분 작성</span></div>
-            <div class="demo-body">
-              <div class="field"><span class="field-label">요청할 일</span><span class="field-value">앱 한 번 받아보기</span></div>
-              <div class="field"><span class="field-label">링크 또는 파일</span><span class="field-value">앱 다운로드 링크</span></div>
-              <div class="field"><span class="field-label">필요한 참여</span><span class="field-value">30건</span></div>
-            </div>
-            <div class="demo-footer">필요한 일과 짧은 조건만 남기면, 요청을 올릴 수 있습니다.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="managed">
-      <div class="container">
-        <p class="section-label">03 / Easy participation</p>
-        <h2 class="section-title">가볍게 요청하고,<br />편하게 참여하도록.</h2>
-        <p class="section-description">요청자는 필요한 내용을 짧게 남기고, 참여자는 조건을 확인한 뒤 참여합니다. Ad+는 요청이 분명하게 전달되고 무리 없이 진행될 수 있도록 기준과 흐름을 정리합니다.</p>
-        <ul class="principles">
-          <li><strong>요청 내용은 분명하게</strong><span>필요한 행동, 참여 기준, 기간과 규모를 미리 확인합니다.</span></li>
-          <li><strong>참여는 가볍게</strong><span>참여자가 내용을 확인하고 직접 참여 여부를 선택합니다.</span></li>
-          <li><strong>무리한 요청은 제한</strong><span>허위·부적절하거나 정책에 맞지 않는 요청은 제한될 수 있습니다.</span></li>
-          <li><strong>진행은 한눈에</strong><span>요청자와 참여자가 완료 흐름을 확인할 수 있습니다.</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section cta" id="start">
-      <div class="container">
-        <p class="section-label">04 / Post a request</p>
-        <h2 class="section-title">작은 요청이 있다면,<br />지금 가볍게 올려보세요.</h2>
-        <p class="section-description">링크 한 번, 다운로드 한 번, 짧은 참여 한 번. 지금 필요한 작은 도움을 조건과 함께 요청하세요.</p>
-        <div class="button-row"><a class="button primary" href="#how">작은 요청 올리기</a><a class="button" href="./index.html">틈틈 일반 요청 보기</a></div>
-      </div>
-    </section>
+    <section class="hero"><div class="hero-copy"><p class="eyebrow">Tumtum Ad+ / small requests</p><h1>처음의 반응을,<br />가볍게<br />요청하세요.</h1><p class="lead">새로 만든 링크를 한 번 봐줄 사람. 파일을 한 번 받아볼 사람. 작은 소식에 참여해 줄 사람이 필요할 때, Ad+는 짧고 분명한 요청을 필요한 참여와 연결합니다.</p><div class="button-row"><a class="button primary" href="#actions">어떤 요청을 할 수 있나요?</a><a class="button" href="#how">어떻게 진행되나요?</a></div></div><div class="visual-placeholder" role="img" aria-label="새로 만든 것을 누군가에게 처음 보여주는 순간 이미지 자리"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 새로 만든 것을 처음 누군가에게 보여주는 순간. 링크, 기기 화면, 참여 행동을 추상적으로 담은 흑백 사진 또는 영상.</span><strong>누군가에게<br />처음 보여줄 때.</strong></div></div></section>
+    <section class="section statement"><div class="container"><p class="section-label">No back and forth</p><h2>올리면,<br />참여가 시작됩니다.</h2><p>견적을 비교하지 않아도, 채팅으로 조율하지 않아도 됩니다. 필요한 반응과 조건만 남기면 가능한 사람이 수락하고 참여를 시작합니다.</p></div></section>
+    <section class="section" id="actions"><div class="container"><p class="section-label">Small requests</p><h2 class="section-title">지금 필요한 반응을,<br />가볍게 연결하세요.</h2><p class="section-description">링크 한 번, 파일 한 번, 짧은 참여 한 번. 필요한 일과 조건만 남기면, 가능한 사람이 수락하고 바로 참여합니다.</p><div class="actions"><article class="action"><p class="number">REQUEST 01</p><h3>링크를<br />한 번 봐줄 때</h3><p>새로 만든 페이지나 콘텐츠를 한 번 확인해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 02</p><h3>파일을<br />한 번 받아볼 때</h3><p>앱, 자료, 파일을 직접 받아보고 시작해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 03</p><h3>소식을<br />처음 전할 때</h3><p>관심 있는 채널이나 계정을 가볍게 연결하고 싶을 때.</p></article><article class="action"><p class="number">REQUEST 04</p><h3>짧은 참여가<br />필요할 때</h3><p>체험, 신청, 설문, 이벤트처럼 짧은 참여가 필요할 때.</p></article></div></div></section>
+    <section class="section" id="how"><div class="container flow-layout"><div class="flow-intro"><p class="section-label">Post and start</p><h2>한 번 올리고,<br />바로<br />시작하세요.</h2><p class="section-description">복잡한 설정, 견적 비교, 채팅 조율 없이 요청할 일과 조건만 짧게 남기세요. 수락되면 참여가 바로 시작됩니다.</p><div class="button-row"><a class="button primary" href="#start">작은 요청 올리기</a></div></div><div><div class="flow-list"><article class="flow-item"><p class="number">01</p><div><h3>요청할 일을 고릅니다.</h3><p>링크 확인, 파일 받기, 소식 연결, 간단 참여 중 필요한 일을 고릅니다.</p></div></article><article class="flow-item"><p class="number">02</p><div><h3>한 줄 설명과 조건을 남깁니다.</h3><p>링크 또는 파일과 함께, 참여에 필요한 내용을 짧게 적습니다.</p></div></article><article class="flow-item"><p class="number">03</p><div><h3>수락되면 바로 참여합니다.</h3><p>조건에 맞는 사람이 요청을 확인하고, 수락한 뒤 바로 참여를 시작합니다.</p></div></article><article class="flow-item"><p class="number">04</p><div><h3>처음의 반응을 확인합니다.</h3><p>요청의 진행 상황과 완료 여부를 한곳에서 봅니다.</p></div></article></div><div class="request-card"><header><span>작은 요청 예시</span><span>1분 작성</span></header><div><span>요청할 일</span><strong>앱 한 번 받아보기</strong></div><div><span>링크 또는 파일</span><strong>앱 다운로드 링크</strong></div><div><span>필요한 참여</span><strong>30건</strong></div><div>필요한 일과 짧은 조건만 남기면 됩니다.</div></div></div></div></section>
+    <section class="section"><div class="container principle-layout"><div class="visual-placeholder"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 참여자가 내용을 확인하고 스스로 선택하는 장면을 담은 흑백 사진 또는 그래픽. 숫자나 광고성과보다 ‘분명하고 가벼운 참여’를 우선합니다.</span><strong>요청은 분명하게.<br />참여는 가볍게.</strong></div></div><div><p class="section-label">Easy participation</p><h2 class="section-title">부담 없이<br />요청하고 참여하도록.</h2><p class="section-description">요청자는 필요한 내용을 짧게 남기고, 참여자는 조건을 확인한 뒤 참여합니다. Ad+는 요청이 분명하게 전달되고 무리 없이 진행될 수 있도록 기준과 흐름을 정리합니다.</p><ul class="principles"><li><strong>요청 내용은 분명하게</strong><span>필요한 행동, 참여 기준, 기간과 규모를 미리 확인합니다.</span></li><li><strong>참여는 가볍게</strong><span>참여자가 내용을 확인하고 직접 참여 여부를 선택합니다.</span></li><li><strong>무리한 요청은 제한</strong><span>허위·부적절하거나 정책에 맞지 않는 요청은 제한될 수 있습니다.</span></li><li><strong>진행은 한눈에</strong><span>요청자와 참여자가 완료 흐름을 확인할 수 있습니다.</span></li></ul></div></div></section>
+    <section class="section cta" id="start"><div class="container"><p class="section-label">Post a request</p><h2>작은 요청이 있다면,<br />지금 가볍게<br />올려보세요.</h2><p class="section-description">링크 한 번, 다운로드 한 번, 짧은 참여 한 번. 지금 필요한 요청을 조건과 함께 올리고, 수락되면 바로 시작하세요.</p><div class="button-row"><a class="button primary" href="#how">작은 요청 올리기</a><a class="button" href="./index.html">틈틈 일반 요청 보기</a></div></div></section>
   </main>
-
   <footer><div class="container">TUMTUM AD+ / Small requests landing page wireframe</div></footer>
 </body>
 </html>
