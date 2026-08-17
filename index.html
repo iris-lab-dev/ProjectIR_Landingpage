@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="작고 급한 비대면 도움과 빠른 물품 전송을 연결하는 틈틈" />
+  <title>틈틈 | 작고 급한 요청, 지금 넘기세요</title>
+  <style>
+    :root { --black: #111; --white: #fff; --gray: #666; --line: #111; --max-width: 1120px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--black); background: var(--white); font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.55; word-break: keep-all; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; cursor: pointer; }
+    .container { width: min(calc(100% - 40px), var(--max-width)); margin: 0 auto; }
+    .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.97); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 20px; }
+    .brand { font-size: 22px; font-weight: 800; letter-spacing: -.06em; }
+    .nav { display: flex; gap: 20px; font-size: 14px; }
+    .nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--black); background: var(--white); font-size: 15px; font-weight: 700; }
+    .button:hover, .button:focus-visible { color: var(--white); background: var(--black); }
+    .button.primary { color: var(--white); background: var(--black); }
+    .button.primary:hover, .button.primary:focus-visible { color: var(--black); background: var(--white); }
+    .eyebrow, .section-label, .card-number { margin: 0; color: var(--gray); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+    .hero { min-height: calc(100vh - 65px); display: flex; align-items: center; padding: 82px 0; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr); gap: 62px; align-items: end; }
+    .hero h1 { max-width: 850px; margin: 18px 0 0; font-size: clamp(48px, 7vw, 84px); line-height: 1.01; letter-spacing: -.09em; }
+    .hero-copy { max-width: 620px; margin: 28px 0 0; font-size: 19px; }
+    .hero-panel { padding: 24px; border: 1px solid var(--line); }
+    .hero-panel h2 { margin: 0; font-size: 16px; }
+    .hero-panel p { margin: 17px 0 0; font-size: 15px; }
+    .hero-panel ul { margin: 18px 0 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+    .hero-panel li { padding: 12px 0; border-bottom: 1px solid var(--line); color: #333; font-size: 14px; }
+
+    .section { padding: 96px 0; border-bottom: 1px solid var(--line); }
+    .section-title { max-width: 800px; margin: 16px 0 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.13; letter-spacing: -.065em; }
+    .section-description { max-width: 730px; margin: 24px 0 0; color: #333; font-size: 18px; }
+
+    .modes { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 48px; border: 1px solid var(--line); }
+    .mode { min-height: 360px; padding: 30px; }
+    .mode + .mode { border-left: 1px solid var(--line); }
+    .mode h3 { margin: 52px 0 12px; font-size: 32px; letter-spacing: -.06em; }
+    .mode > p { max-width: 430px; margin: 0; color: #333; font-size: 17px; }
+    .mode-detail { display: inline-block; margin-top: 28px; padding-bottom: 3px; border-bottom: 1px solid var(--black); font-size: 14px; font-weight: 700; }
+
+    .split-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; align-items: start; }
+    .section-side { position: sticky; top: 110px; }
+    .section-side .section-description { font-size: 17px; }
+    .numbered-flow { border-top: 1px solid var(--line); }
+    .numbered-item { display: grid; grid-template-columns: 72px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .number { color: var(--gray); font-size: 14px; font-weight: 700; }
+    .numbered-item h3 { margin: 0; font-size: 23px; letter-spacing: -.05em; }
+    .numbered-item p { margin: 8px 0 0; color: #444; }
+
+    .request-demo { margin-top: 38px; border: 1px solid var(--line); }
+    .request-demo-head { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 700; }
+    .request-demo-body { padding: 20px; }
+    .field { padding: 14px 0; border-bottom: 1px solid #bbb; }
+    .field:last-child { border-bottom: 0; }
+    .field-label { display: block; margin-bottom: 5px; color: var(--gray); font-size: 12px; font-weight: 700; }
+    .field-value { font-size: 16px; font-weight: 700; }
+    .request-demo-footer { padding: 16px 20px; border-top: 1px solid var(--line); background: var(--black); color: var(--white); font-size: 14px; font-weight: 700; }
+
+    .quick-examples { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 46px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .quick-example { min-height: 190px; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .quick-example h3 { margin: 40px 0 8px; font-size: 19px; letter-spacing: -.04em; }
+    .quick-example p { margin: 0; color: #444; font-size: 14px; }
+
+    .transfer-types { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 38px; border: 1px solid var(--line); }
+    .transfer-type { min-height: 240px; padding: 24px; }
+    .transfer-type + .transfer-type { border-left: 1px solid var(--line); }
+    .transfer-type h3 { margin: 34px 0 10px; font-size: 22px; letter-spacing: -.05em; }
+    .transfer-type p { margin: 0; color: #444; }
+
+    .comparison { margin-top: 46px; border-top: 1px solid var(--line); }
+    .comparison-item { display: grid; grid-template-columns: 210px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .comparison-item strong { font-size: 17px; }
+    .comparison-item span { color: #444; }
+
+    .cta { color: var(--white); background: var(--black); }
+    .cta .section-label, .cta .section-description { color: #ddd; }
+    .cta .button { color: var(--white); border-color: var(--white); background: var(--black); }
+    .cta .button:hover, .cta .button:focus-visible { color: var(--black); background: var(--white); }
+    .cta .button.primary { color: var(--black); background: var(--white); }
+    .cta .button.primary:hover, .cta .button.primary:focus-visible { color: var(--white); background: var(--black); }
+    footer { padding: 28px 0; color: var(--gray); font-size: 13px; }
+
+    @media (max-width: 720px) {
+      .nav { display: none; }
+      .hero, .section { padding: 64px 0; }
+      .hero { min-height: auto; }
+      .hero-grid, .modes, .split-layout, .quick-examples, .transfer-types { grid-template-columns: 1fr; }
+      .hero-grid { gap: 34px; }
+      .mode + .mode, .transfer-type + .transfer-type { border-top: 1px solid var(--line); border-left: 0; }
+      .mode { min-height: 290px; }
+      .mode h3 { margin-top: 36px; }
+      .section-side { position: static; }
+      .split-layout { gap: 42px; }
+      .quick-example { min-height: 0; }
+      .quick-example h3 { margin-top: 28px; }
+      .comparison-item { grid-template-columns: 1fr; gap: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="틈틈 처음으로">틈틈</a>
+      <nav class="nav" aria-label="페이지 탐색">
+        <a href="#modes">두 가지 요청</a>
+        <a href="#remote">비대면 도움</a>
+        <a href="#remote-flow">요청 방법</a>
+        <a href="#transfer">빠른 전송</a>
+        <a href="#why">왜 틈틈인가</a>
+      </nav>
+      <a class="button" href="#start">지금 요청하기</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">SMALL REQUESTS, NOW</p>
+          <h1>작고 급한 요청,<br />지금 넘기세요.</h1>
+          <p class="hero-copy">PPT 한 장이 막혔을 때도, 필요한 물품을 바로 받아야 할 때도. 틈틈은 혼자 처리하기엔 번거롭고 오래 맡기기엔 작은 요청을 빠르게 연결합니다.</p>
+          <div class="button-row">
+            <a class="button primary" href="#remote">비대면 도움 보기</a>
+            <a class="button" href="#transfer">빠른 전송 보기</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="틈틈의 두 가지 요청 방식">
+          <h2>지금 필요한 방식으로 요청하세요.</h2>
+          <p>틈틈은 작은 요청을 두 가지 방식으로 빠르게 해결합니다.</p>
+          <ul>
+            <li>화면 안에서 막힌 일은 비대면 도움으로</li>
+            <li>필요한 물품은 빠른 전송으로</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="modes">
+      <div class="container">
+        <p class="section-label">01 / Choose your request</p>
+        <h2 class="section-title">지금 필요한 방식으로<br />요청하세요.</h2>
+        <p class="section-description">틈틈은 작은 요청을 두 가지 방식으로 빠르게 해결합니다. 화면 안에서 막힌 일은 비대면 도움으로, 필요한 물품은 빠른 전송으로 요청할 수 있습니다.</p>
+        <div class="modes">
+          <article class="mode">
+            <p class="card-number">MODE 01 / REMOTE</p>
+            <h3>비대면 도움</h3>
+            <p>화면 안에서 막힌 작은 일을 빠르게 넘기세요. PPT 한 장, 사진 한 장, 짧은 글과 파일처럼 작지만 급한 디지털 요청에 맞습니다.</p>
+            <a class="mode-detail" href="#remote">비대면 도움 알아보기 →</a>
+          </article>
+          <article class="mode">
+            <p class="card-number">MODE 02 / TRANSFER</p>
+            <h3>빠른 전송</h3>
+            <p>필요한 물품을 원하는 곳까지 전송하세요. 직접 가진 물품부터 수령하거나 구매한 물품까지, 필요한 방식으로 요청할 수 있습니다.</p>
+            <a class="mode-detail" href="#transfer">빠른 전송 알아보기 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="remote">
+      <div class="container">
+        <p class="section-label">02 / Lightweight remote help</p>
+        <h2 class="section-title">크게 맡기기엔 작고,<br />혼자 하기엔 급한 일.</h2>
+        <p class="section-description">틈틈의 비대면 도움은 복잡한 외주가 아닙니다. 몇 분 안에 요청을 올리고, 필요한 만큼만 가볍게 도움받는 작은 디지털 요청 서비스입니다.</p>
+        <div class="quick-examples">
+          <article class="quick-example"><p class="card-number">01</p><h3>PPT 한 장</h3><p>한 장만 보기 좋게 정리하거나 간단히 다듬어야 할 때.</p></article>
+          <article class="quick-example"><p class="card-number">02</p><h3>사진 한 장</h3><p>배경 제거, 크기 조절, 간단한 보정이 필요할 때.</p></article>
+          <article class="quick-example"><p class="card-number">03</p><h3>짧은 글 정리</h3><p>소개 문구, 메시지, 짧은 텍스트를 다듬어야 할 때.</p></article>
+          <article class="quick-example"><p class="card-number">04</p><h3>작은 확인</h3><p>파일, 링크, 자료를 빠르게 확인하거나 정리해야 할 때.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="remote-flow">
+      <div class="container split-layout">
+        <div class="section-side">
+          <p class="section-label">03 / Request in minutes</p>
+          <h2 class="section-title">한 장, 한 번,<br />짧게 요청하세요.</h2>
+          <p class="section-description">무엇이 필요한지 고르고, 파일과 한 줄 설명을 남기면 됩니다. 견적을 비교하거나 긴 의뢰서를 작성할 필요가 없습니다.</p>
+          <div class="button-row"><a class="button primary" href="#start">비대면 도움 요청하기</a></div>
+        </div>
+        <div>
+          <div class="numbered-flow">
+            <article class="numbered-item"><span class="number">01</span><div><h3>필요한 도움을 고릅니다.</h3><p>사진 편집, PPT, 글 정리처럼 요청의 유형을 빠르게 선택합니다.</p></div></article>
+            <article class="numbered-item"><span class="number">02</span><div><h3>파일과 한 줄 설명을 남깁니다.</h3><p>필요한 파일을 올리고, 원하는 결과를 짧게 적습니다.</p></div></article>
+            <article class="numbered-item"><span class="number">03</span><div><h3>가능한 에이전트가 응답합니다.</h3><p>작고 명확한 요청일수록 더 빠르게 도움을 시작할 수 있습니다.</p></div></article>
+            <article class="numbered-item"><span class="number">04</span><div><h3>결과를 받고 끝냅니다.</h3><p>필요한 결과물을 확인하고, 급한 일을 바로 넘깁니다.</p></div></article>
+          </div>
+          <div class="request-demo" aria-label="비대면 도움 요청 예시">
+            <div class="request-demo-head"><span>비대면 요청 예시</span><span>5분 작성</span></div>
+            <div class="request-demo-body">
+              <div class="field"><span class="field-label">무엇을 도와드릴까요?</span><span class="field-value">PPT 한 장 다듬기</span></div>
+              <div class="field"><span class="field-label">원하는 결과</span><span class="field-value">텍스트를 정리하고 보기 좋게 배치해 주세요.</span></div>
+              <div class="field"><span class="field-label">언제 필요하세요?</span><span class="field-value">오늘 안에</span></div>
+            </div>
+            <div class="request-demo-footer">작은 요청일수록, 더 가볍고 빠르게.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transfer">
+      <div class="container">
+        <p class="section-label">04 / Fast transfer</p>
+        <h2 class="section-title">필요한 물품을,<br />필요한 곳까지 빠르게.</h2>
+        <p class="section-description">빠른 전송은 단순히 물품을 옮기는 요청만이 아닙니다. 직접 가진 물품을 전달할 수도 있고, 필요한 물품을 수령하거나 구매한 뒤 원하는 장소까지 전송할 수도 있습니다.</p>
+        <div class="transfer-types">
+          <article class="transfer-type"><p class="card-number">TYPE 01</p><h3>직접 전송</h3><p>이미 가지고 있는 물품을 원하는 위치로 빠르게 전달해야 할 때.</p></article>
+          <article class="transfer-type"><p class="card-number">TYPE 02</p><h3>수령 후 전송</h3><p>매장이나 지정 장소에서 물품을 받은 뒤 원하는 위치로 전달해야 할 때.</p></article>
+          <article class="transfer-type"><p class="card-number">TYPE 03</p><h3>구매 후 전송</h3><p>장보기나 오픈런처럼 필요한 물품을 구매·확보한 뒤 전달해야 할 때.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transfer-flow">
+      <div class="container split-layout">
+        <div class="section-side">
+          <p class="section-label">05 / Transfer, now</p>
+          <h2 class="section-title">물품이 필요하다면,<br />바로 요청하세요.</h2>
+          <p class="section-description">요청 유형을 고르고 필요한 정보만 입력하세요. 요청을 먼저 수락한 에이전트가 물품의 수령·구매·전달 과정을 진행합니다.</p>
+          <div class="button-row"><a class="button primary" href="#start">전송 요청하기</a></div>
+        </div>
+        <div>
+          <div class="numbered-flow">
+            <article class="numbered-item"><span class="number">01</span><div><h3>전송 유형을 고릅니다.</h3><p>직접 전송, 수령 후 전송, 구매 후 전송 중 필요한 방식을 선택합니다.</p></div></article>
+            <article class="numbered-item"><span class="number">02</span><div><h3>필요한 물품과 위치를 입력합니다.</h3><p>수령 또는 구매할 장소, 전달할 장소, 물품 정보를 간단히 입력합니다.</p></div></article>
+            <article class="numbered-item"><span class="number">03</span><div><h3>에이전트가 요청을 수락합니다.</h3><p>가능한 에이전트가 요청을 먼저 수락하면 전송 진행이 시작됩니다.</p></div></article>
+            <article class="numbered-item"><span class="number">04</span><div><h3>전송 상태를 확인합니다.</h3><p>수령·구매 준비부터 전달 완료까지 요청의 진행 상태를 확인합니다.</p></div></article>
+          </div>
+          <div class="request-demo" aria-label="구매 후 전송 요청 예시">
+            <div class="request-demo-head"><span>구매 후 전송 예시</span><span>지금 요청</span></div>
+            <div class="request-demo-body">
+              <div class="field"><span class="field-label">전송 유형</span><span class="field-value">구매 후 전송</span></div>
+              <div class="field"><span class="field-label">구매할 물품</span><span class="field-value">지정 목록의 장보기 물품</span></div>
+              <div class="field"><span class="field-label">전달할 위치</span><span class="field-value">서울시 성동구 성수동</span></div>
+            </div>
+            <div class="request-demo-footer">물품을 구매·확보한 뒤, 원하는 곳까지 전송합니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <p class="section-label">06 / Why Tumtum</p>
+        <h2 class="section-title">일반 게시글보다 빠르고,<br />큰 외주보다 가볍게.</h2>
+        <p class="section-description">틈틈은 오래 기다리며 사람을 찾는 서비스도, 큰 업무를 맡기는 플랫폼도 아닙니다. 지금 필요한 작은 요청을 빠르게 작성하고 해결하는 데 집중합니다.</p>
+        <div class="comparison">
+          <div class="comparison-item"><strong>비대면은 더 가볍게</strong><span>한 장·한 번 수준의 디지털 요청을 짧은 설명과 파일만으로 빠르게 올립니다.</span></div>
+          <div class="comparison-item"><strong>전송은 더 명확하게</strong><span>직접 전송, 수령 후 전송, 구매 후 전송처럼 물품을 확보하고 전달하는 방식을 요청 안에서 정합니다.</span></div>
+          <div class="comparison-item"><strong>작은 일은 더 빠르게</strong><span>지금 필요한 요청을 구조화하고, 가능한 에이전트가 빠르게 확인하고 수락할 수 있게 만듭니다.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="start">
+      <div class="container">
+        <p class="section-label">07 / Get it done now</p>
+        <h2 class="section-title">지금 필요한 요청부터,<br />틈틈에서 넘기세요.</h2>
+        <p class="section-description">화면 안에서 막힌 작은 일도, 필요한 물품을 확보하고 전달해야 하는 일도. 필요한 방식으로 지금 요청하세요.</p>
+        <div class="button-row">
+          <a class="button primary" href="#remote">비대면 도움 요청하기</a>
+          <a class="button" href="#transfer">전송 요청하기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">TUMTUM / Landing page wireframe / Content and UX draft</div></footer>
+</body>
+</html>
