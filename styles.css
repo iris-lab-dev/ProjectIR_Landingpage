@@ -174,3 +174,27 @@ footer { padding: 25px 0; color: var(--muted); font-size: 11px; }
   .ad-signature { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } [data-reveal] { opacity: 1; transform: none; transition: none; } .home-page .hero h1 span { animation: none; } }
+
+.ad-page .hero { display: block; min-height: calc(100svh - 72px); }
+.ad-page .hero-copy { min-height: inherit; align-items: center; justify-content: center; padding: 48px 24px; text-align: center; }
+.ad-page .hero .eyebrow { margin-bottom: clamp(24px, 4.5vh, 56px); }
+.ad-page .hero h1 { max-width: 860px; margin: 0; font-size: clamp(60px, 8.4vw, 128px); line-height: .97; letter-spacing: -.06em; }
+.ad-page .hero h1 span { display: block; animation: hero-line-in .9s cubic-bezier(.22, 1, .36, 1) both; }
+.ad-page .hero h1 span:nth-child(2) { animation-delay: .1s; }
+.ad-page .hero h1 span:nth-child(3) { animation-delay: .2s; }
+.ad-page .hero h1 mark { display: inline-block; padding: .01em .1em .05em; color: var(--canvas); background: var(--ink); transform: rotate(-2deg); }
+.ad-page .hero .lead { max-width: 430px; margin: clamp(32px, 5vh, 54px) 0 0; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.65; }
+.ad-page .hero .button-row { justify-content: center; margin-top: 34px; }
+.ad-page .why .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; padding: 0; border-top: 0; counter-reset: principle; }
+.ad-page .why .principles li { display: flex; flex-direction: column; gap: 9px; padding-block: 18px; border-top: 1px solid #747474; border-bottom: 0; }
+.ad-page .why .principles li::before { color: #b8b8b8; font-size: 11px; font-weight: 700; letter-spacing: .12em; content: counter(principle, decimal-leading-zero); counter-increment: principle; }
+.ad-page .why .principles strong { font-size: 19px; }
+.ad-page .why .principles span { margin-top: 0; color: #d0d0d0; font-size: 13px; }
+
+@media (max-width: 760px) {
+  .ad-page .hero { min-height: calc(100svh - 64px); }
+  .ad-page .hero-copy { padding: 64px 16px; }
+  .ad-page .hero h1 { font-size: clamp(54px, 15.2vw, 78px); line-height: .98; letter-spacing: -.055em; }
+  .ad-page .why .principles { grid-template-columns: 1fr; gap: 0; }
+}
+
