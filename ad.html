@@ -21,6 +21,49 @@
     .principle-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 9vw; align-items: center; } .principle-layout .visual-placeholder { min-height: 590px; } .principles { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; } .principles li { padding: 25px 0; border-bottom: 1px solid var(--line); } .principles strong { display: block; font-size: 21px; letter-spacing: -.05em; } .principles span { display: block; margin-top: 7px; color: #444; }
     .cta { color: var(--white); background: var(--black); } .cta .section-label, .cta .section-description { color: #d0d0d0; } .cta h2 { max-width: 920px; margin: 16px 0 0; font-size: clamp(46px, 6vw, 82px); line-height: 1.01; letter-spacing: -.1em; } .cta .button { color: var(--white); border-color: var(--white); background: var(--black); } .cta .button:hover { color: var(--black); background: var(--white); } .cta .primary { color: var(--black); background: var(--white); } footer { padding: 25px 0; color: var(--gray); font-size: 12px; }
     @media (max-width: 760px) { .container { width: min(calc(100% - 32px), var(--max-width)); } .back-link { display: none; } .hero, .flow-layout, .principle-layout { grid-template-columns: 1fr; } .hero-copy { min-height: 66svh; padding: 70px 16px; } .hero .visual-placeholder { min-height: 400px; } .statement { min-height: 60vh; } .actions { grid-template-columns: 1fr; } .flow-intro { position: static; } .principle-layout .visual-placeholder { min-height: 410px; } }
+    @font-face { font-family: "ONE Mobile Title"; src: url("../ProjectIR_Frontend/assets/fonts/ONE-Mobile-Title.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "ONE Mobile Body"; src: url("../ProjectIR_Frontend/assets/fonts/ONE-Mobile-Regular.ttf") format("truetype"); font-display: swap; }
+
+    :root { --ink: #181718; --canvas: #ffffff; --muted: #747474; --surface: #f6f6f6; --outline: #e5e5e5; --outline-strong: #d4d4d4; --max-width: 800px; }
+    body { color: var(--ink); background: var(--canvas); font-family: "ONE Mobile Body", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+    .container { width: min(calc(100% - 48px), var(--max-width)); }
+    .site-header { border-bottom-color: rgba(229, 229, 229, .92); background: rgba(255, 255, 255, .88); box-shadow: 0 1px 12px rgba(24, 23, 24, .04); }
+    .header-inner { min-height: 72px; }
+    .brand, h1, h2, h3, .placeholder-copy strong { font-family: "ONE Mobile Title", "ONE Mobile Body", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; }
+    .brand { letter-spacing: -.055em; }
+    .back-link { color: #595959; text-decoration: none; }
+    .back-link::before { content: "←"; margin-right: 7px; }
+    .back-link:hover { color: var(--ink); }
+    .button { min-height: 48px; border-color: var(--ink); border-radius: 2px; font-weight: 600; }
+    .button:focus-visible, .back-link:focus-visible { outline: 2px solid #181718; outline-offset: 4px; }
+    .eyebrow, .section-label, .number { color: var(--muted); font-weight: 700; }
+    h1, .statement h2, .section-title, .flow-intro h2, .cta h2 { letter-spacing: -.075em; }
+    .lead, .section-description, .statement p, .action p, .flow-item p, .principles span { color: #404040; }
+    .hero, .section { border-bottom-color: var(--outline); }
+    .visual-placeholder { background: var(--ink); }
+    .visual-placeholder::before { border-color: rgba(255, 255, 255, .4); }
+    .visual-placeholder::after { border-color: rgba(255, 255, 255, .28); }
+    .placeholder-copy span { color: #d4d4d4; }
+    .actions, .request-card { border-color: var(--outline-strong); background: var(--outline-strong); }
+    .action { background: var(--canvas); }
+    .flow-list { border-top-color: var(--outline-strong); }
+    .flow-item { border-bottom-color: var(--outline); }
+    .request-card { background: var(--canvas); }
+    .request-card header { border-bottom-color: var(--outline); }
+    .request-card div { border-bottom-color: var(--outline); }
+    .principles { border-top-color: var(--outline-strong); }
+    .principles li { border-bottom-color: var(--outline); }
+    .cta { background: var(--ink); }
+    footer { color: var(--muted); }
+    body { background: var(--surface); }
+    .hero-copy, .statement .container, .action, .request-card { background: var(--canvas); }
+    h1, h2, h3, .placeholder-copy strong { font-family: "ONE Mobile Body", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; letter-spacing: -.055em; }
+    h1 { font-weight: 700; }
+    h2, h3, .placeholder-copy strong { font-weight: 600; }
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease-out, transform .7s cubic-bezier(.22, 1, .36, 1); will-change: opacity, transform; }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } [data-reveal] { opacity: 1; transform: none; transition: none; } }
+    @media (max-width: 760px) { .container { width: min(calc(100% - 32px), var(--max-width)); } .header-inner { min-height: 64px; } .hero-copy { padding-inline: 16px; } .button { min-height: 48px; } }
   </style>
 </head>
 <body>
@@ -34,5 +77,25 @@
     <section class="section cta" id="start"><div class="container"><p class="section-label">Post a request</p><h2>작은 요청이 있다면,<br />지금 가볍게<br />올려보세요.</h2><p class="section-description">링크 한 번, 다운로드 한 번, 짧은 참여 한 번. 지금 필요한 요청을 조건과 함께 올리고, 수락되면 바로 시작하세요.</p><div class="button-row"><a class="button primary" href="#how">작은 요청 올리기</a><a class="button" href="./index.html">틈틈 일반 요청 보기</a></div></div></section>
   </main>
   <footer><div class="container">TUMTUM AD+ / Small requests landing page wireframe</div></footer>
+  <script>
+    const revealTargets = document.querySelectorAll(".section > .container");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    revealTargets.forEach((target) => target.dataset.reveal = "");
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -7%" });
+
+      revealTargets.forEach((target) => observer.observe(target));
+    }
+  </script>
 </body>
 </html>
