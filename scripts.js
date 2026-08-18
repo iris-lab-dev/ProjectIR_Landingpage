@@ -22,38 +22,3 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
 
   revealTargets.forEach((target) => observer.observe(target));
 }
-
-const requestSteps = document.querySelectorAll("[data-request-step]");
-const requestPanels = document.querySelectorAll("[data-request-panel]");
-const requestProgress = document.querySelector(".request-card-progress");
-let requestStepTimer;
-
-const setRequestStep = (selectedStep) => {
-  window.clearTimeout(requestStepTimer);
-
-  requestSteps.forEach((item) => {
-    item.classList.remove("is-active");
-    item.setAttribute("aria-selected", "false");
-  });
-  requestPanels.forEach((panel) => {
-    const isSelected = panel.dataset.requestPanel === selectedStep;
-    panel.classList.toggle("is-active", isSelected);
-    panel.hidden = !isSelected;
-  });
-
-  const selectedButton = document.querySelector(`[data-request-step="${selectedStep}"]`);
-  selectedButton.offsetWidth;
-  selectedButton.classList.add("is-active");
-  selectedButton.setAttribute("aria-selected", "true");
-  requestProgress.textContent = `0${selectedStep} / 03`;
-
-  requestStepTimer = window.setTimeout(() => {
-    setRequestStep(String(selectedStep === "3" ? 1 : Number(selectedStep) + 1));
-  }, 3000);
-};
-
-requestSteps.forEach((step) => {
-  step.addEventListener("click", () => setRequestStep(step.dataset.requestStep));
-});
-
-if (requestSteps.length) setRequestStep("1");
