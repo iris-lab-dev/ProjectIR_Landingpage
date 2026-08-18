@@ -67,8 +67,22 @@
 
     <section class="section" id="how">
       <div class="container flow-layout">
-        <div class="flow-intro"><p class="section-label">Request in minutes</p><h2>당신은 짧게 남기고,<br />다시 하던 일로<br />돌아가세요.</h2><p class="section-description">필요한 일과 원하는 결과만 남기면 됩니다. 비교하고 조율하는 대신, 당신의 다음 일에 집중하세요.</p><div class="button-row"><a class="button primary" href="#start">내 일 요청하기</a></div></div>
-        <div><div class="flow-list"><article class="flow-item"><p class="number">01</p><div><h3>지금 필요한 일을 고르세요.</h3><p>사진 편집, PPT, 글 정리 또는 전송 방식처럼 당신에게 필요한 요청만 선택하세요.</p></div></article><article class="flow-item"><p class="number">02</p><div><h3>원하는 결과만 알려주세요.</h3><p>파일 또는 물품 정보와 원하는 결과를 간단히 적으면 됩니다.</p></div></article><article class="flow-item"><p class="number">03</p><div><h3>누군가가 일을 이어갑니다.</h3><p>요청을 수행할 수 있는 사람이 내용을 확인하고, 할 수 있는 요청부터 수락해 시작합니다.</p></div></article><article class="flow-item"><p class="number">04</p><div><h3>당신의 다음 일을 계속하세요.</h3><p>필요한 결과를 확인하고, 멈췄던 다음 일로 넘어가세요.</p></div></article></div><div class="request-card"><header><span>비대면 요청 예시</span><span>5분 작성</span></header><div><span>무엇을 요청하시나요?</span><strong>PPT 한 장 다듬기</strong></div><div><span>원하는 결과</span><strong>텍스트를 정리하고 보기 좋게 배치해 주세요.</strong></div><div><span>언제 필요하세요?</span><strong>오늘 안에</strong></div><div>이 정도면 충분합니다.</div></div></div>
+        <div class="flow-intro"><p class="section-label">Request in minutes</p><h2>짧게 남기고,<br />다시 하던 일로<br />돌아가세요.</h2><p class="section-description">필요한 일과 원하는 결과만 남기면 됩니다. 비교하고 조율하는 대신, 당신의 다음 일에 집중하세요.</p><div class="button-row"><a class="button primary" href="#start">내 일 요청하기</a></div></div>
+        <div class="request-preview">
+          <ol class="request-steps" aria-label="요청 과정">
+            <li><button class="request-step is-active" type="button" data-request-step="1" aria-controls="request-step-1" aria-selected="true"><span class="number">01</span><strong>필요한 일 선택</strong><span class="request-step-progress" aria-hidden="true"></span></button></li>
+            <li><button class="request-step" type="button" data-request-step="2" aria-controls="request-step-2" aria-selected="false"><span class="number">02</span><strong>원하는 결과 입력</strong><span class="request-step-progress" aria-hidden="true"></span></button></li>
+            <li><button class="request-step" type="button" data-request-step="3" aria-controls="request-step-3" aria-selected="false"><span class="number">03</span><strong>요청 시작</strong><span class="request-step-progress" aria-hidden="true"></span></button></li>
+          </ol>
+          <div class="request-card">
+            <header><span>비대면 요청 예시</span><span class="request-card-progress">01 / 03</span></header>
+            <div class="request-panel is-active" id="request-step-1" data-request-panel="1"><span>무엇을 요청하시나요?</span><strong>PPT 한 장 다듬기</strong><p>사진 편집, 글 정리 또는 전송처럼 필요한 일을 고르세요.</p></div>
+            <div class="request-panel" id="request-step-2" data-request-panel="2" hidden><span>원하는 결과</span><strong>텍스트를 정리하고 보기 좋게 배치해 주세요.</strong><p>파일이나 물품 정보와 원하는 결과를 간단히 남기세요.</p></div>
+            <div class="request-panel" id="request-step-3" data-request-panel="3" hidden><span>언제 필요하세요?</span><strong>오늘 안에</strong><p>내용을 확인한 사람이 가능한 요청부터 이어서 시작합니다.</p></div>
+            <div class="request-card-complete">이 내용으로 요청할게요</div>
+          </div>
+          <p class="request-caption">선택한 단계의 내용만 확인하고, 다음 단계로 넘어가세요.</p>
+        </div>
       </div>
     </section>
 
