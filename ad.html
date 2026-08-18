@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="클릭, 다운로드, 짧은 참여처럼 가벼운 요청을 필요한 참여와 연결하는 틈틈 Ad+" />
   <title>틈틈 Ad+ | 처음의 반응을 가볍게 요청하세요</title>
-  <style>
+  <link rel="stylesheet" href="./styles.css" />
+  <!--
     :root { --black: #111; --white: #fff; --gray: #686868; --soft: #f1f1ef; --line: #111; --max-width: 1240px; }
     * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; color: var(--black); background: var(--white); font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.5; word-break: keep-all; } a { color: inherit; text-decoration: none; }
     .container { width: min(calc(100% - 48px), var(--max-width)); margin: 0 auto; } .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.95); backdrop-filter: blur(10px); } .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 20px; } .brand { font-size: 22px; font-weight: 800; letter-spacing: -.08em; } .header-right { display: flex; align-items: center; gap: 18px; } .back-link { font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
@@ -63,43 +64,26 @@
     [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s ease-out, transform .8s cubic-bezier(.22, 1, .36, 1); will-change: opacity, transform; }
     [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } [data-reveal] { opacity: 1; transform: none; transition: none; } }
+    :root { --radius-button: 8px; --radius-card: 10px; }
+    .hero, .section { border-bottom: 0; }
+    .button { border-radius: var(--radius-button); }
+    .visual-placeholder { border-radius: var(--radius-card); }
+    .actions, .request-card { border-radius: var(--radius-card); overflow: hidden; }
+    .action { border-radius: 0; }
     @media (max-width: 760px) { .container { width: min(calc(100% - 32px), var(--max-width)); } .header-inner { min-height: 64px; } .hero-copy { padding-inline: 16px; } .button { min-height: 48px; } }
-  </style>
+  -->
 </head>
-<body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="./index.html">틈틈</a><div class="header-right"><a class="back-link" href="./index.html">일반 요청으로 돌아가기</a><a class="button primary" href="#start">작은 요청 올리기</a></div></div></header>
+<body class="ad-page">
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="./index.html">틈틈</a><div class="header-right"><a class="back-link" href="./index.html">일반 요청으로 돌아가기</a><a class="button primary" href="#start">첫 반응 요청하기</a></div></div></header>
   <main>
-    <section class="hero"><div class="hero-copy"><p class="eyebrow">Tumtum Ad+ / small requests</p><h1>처음의 반응을,<br />가볍게<br />요청하세요.</h1><p class="lead">새로 만든 링크를 한 번 봐줄 사람. 파일을 한 번 받아볼 사람. 작은 소식에 참여해 줄 사람이 필요할 때, Ad+는 짧고 분명한 요청을 필요한 참여와 연결합니다.</p><div class="button-row"><a class="button primary" href="#actions">어떤 요청을 할 수 있나요?</a><a class="button" href="#how">어떻게 진행되나요?</a></div></div><div class="visual-placeholder" role="img" aria-label="새로 만든 것을 누군가에게 처음 보여주는 순간 이미지 자리"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 새로 만든 것을 처음 누군가에게 보여주는 순간. 링크, 기기 화면, 참여 행동을 추상적으로 담은 흑백 사진 또는 영상.</span><strong>누군가에게<br />처음 보여줄 때.</strong></div></div></section>
-    <section class="section statement"><div class="container"><p class="section-label">No back and forth</p><h2>올리면,<br />참여가 시작됩니다.</h2><p>견적을 비교하지 않아도, 채팅으로 조율하지 않아도 됩니다. 필요한 반응과 조건만 남기면 가능한 사람이 수락하고 참여를 시작합니다.</p></div></section>
-    <section class="section" id="actions"><div class="container"><p class="section-label">Small requests</p><h2 class="section-title">지금 필요한 반응을,<br />가볍게 연결하세요.</h2><p class="section-description">링크 한 번, 파일 한 번, 짧은 참여 한 번. 필요한 일과 조건만 남기면, 가능한 사람이 수락하고 바로 참여합니다.</p><div class="actions"><article class="action"><p class="number">REQUEST 01</p><h3>링크를<br />한 번 봐줄 때</h3><p>새로 만든 페이지나 콘텐츠를 한 번 확인해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 02</p><h3>파일을<br />한 번 받아볼 때</h3><p>앱, 자료, 파일을 직접 받아보고 시작해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 03</p><h3>소식을<br />처음 전할 때</h3><p>관심 있는 채널이나 계정을 가볍게 연결하고 싶을 때.</p></article><article class="action"><p class="number">REQUEST 04</p><h3>짧은 참여가<br />필요할 때</h3><p>체험, 신청, 설문, 이벤트처럼 짧은 참여가 필요할 때.</p></article></div></div></section>
-    <section class="section" id="how"><div class="container flow-layout"><div class="flow-intro"><p class="section-label">Post and start</p><h2>한 번 올리고,<br />바로<br />시작하세요.</h2><p class="section-description">복잡한 설정, 견적 비교, 채팅 조율 없이 요청할 일과 조건만 짧게 남기세요. 수락되면 참여가 바로 시작됩니다.</p><div class="button-row"><a class="button primary" href="#start">작은 요청 올리기</a></div></div><div><div class="flow-list"><article class="flow-item"><p class="number">01</p><div><h3>요청할 일을 고릅니다.</h3><p>링크 확인, 파일 받기, 소식 연결, 간단 참여 중 필요한 일을 고릅니다.</p></div></article><article class="flow-item"><p class="number">02</p><div><h3>한 줄 설명과 조건을 남깁니다.</h3><p>링크 또는 파일과 함께, 참여에 필요한 내용을 짧게 적습니다.</p></div></article><article class="flow-item"><p class="number">03</p><div><h3>수락되면 바로 참여합니다.</h3><p>조건에 맞는 사람이 요청을 확인하고, 수락한 뒤 바로 참여를 시작합니다.</p></div></article><article class="flow-item"><p class="number">04</p><div><h3>처음의 반응을 확인합니다.</h3><p>요청의 진행 상황과 완료 여부를 한곳에서 봅니다.</p></div></article></div><div class="request-card"><header><span>작은 요청 예시</span><span>1분 작성</span></header><div><span>요청할 일</span><strong>앱 한 번 받아보기</strong></div><div><span>링크 또는 파일</span><strong>앱 다운로드 링크</strong></div><div><span>필요한 참여</span><strong>30건</strong></div><div>필요한 일과 짧은 조건만 남기면 됩니다.</div></div></div></div></section>
-    <section class="section"><div class="container principle-layout"><div class="visual-placeholder"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 참여자가 내용을 확인하고 스스로 선택하는 장면을 담은 흑백 사진 또는 그래픽. 숫자나 광고성과보다 ‘분명하고 가벼운 참여’를 우선합니다.</span><strong>요청은 분명하게.<br />참여는 가볍게.</strong></div></div><div><p class="section-label">Easy participation</p><h2 class="section-title">부담 없이<br />요청하고 참여하도록.</h2><p class="section-description">요청자는 필요한 내용을 짧게 남기고, 참여자는 조건을 확인한 뒤 참여합니다. Ad+는 요청이 분명하게 전달되고 무리 없이 진행될 수 있도록 기준과 흐름을 정리합니다.</p><ul class="principles"><li><strong>요청 내용은 분명하게</strong><span>필요한 행동, 참여 기준, 기간과 규모를 미리 확인합니다.</span></li><li><strong>참여는 가볍게</strong><span>참여자가 내용을 확인하고 직접 참여 여부를 선택합니다.</span></li><li><strong>무리한 요청은 제한</strong><span>허위·부적절하거나 정책에 맞지 않는 요청은 제한될 수 있습니다.</span></li><li><strong>진행은 한눈에</strong><span>요청자와 참여자가 완료 흐름을 확인할 수 있습니다.</span></li></ul></div></div></section>
-    <section class="section cta" id="start"><div class="container"><p class="section-label">Post a request</p><h2>작은 요청이 있다면,<br />지금 가볍게<br />올려보세요.</h2><p class="section-description">링크 한 번, 다운로드 한 번, 짧은 참여 한 번. 지금 필요한 요청을 조건과 함께 올리고, 수락되면 바로 시작하세요.</p><div class="button-row"><a class="button primary" href="#how">작은 요청 올리기</a><a class="button" href="./index.html">틈틈 일반 요청 보기</a></div></div></section>
+    <section class="hero"><div class="hero-copy"><p class="eyebrow">Tumtum Ad+ / small requests</p><h1>당신이 만든<br />새로운 시작에,<br />첫 반응을.</h1><p class="lead">새로 만든 링크와 파일, 처음 전하고 싶은 소식. 누군가에게 보여주기까지의 첫걸음을 가볍게 시작하세요.</p><div class="button-row"><a class="button primary" href="#actions">첫 반응 요청하기</a><a class="button" href="#how">어떻게 진행되나요?</a></div></div><div class="visual-placeholder" role="img" aria-label="새로 만든 것을 누군가에게 처음 보여주는 순간 이미지 자리"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 새로 만든 것을 처음 누군가에게 보여주는 순간. 링크, 기기 화면, 참여 행동을 추상적으로 담은 흑백 사진 또는 영상.</span><strong>누군가에게<br />처음 보여줄 때.</strong></div></div></section>
+    <section class="section statement"><div class="container"><p class="section-label">No back and forth</p><h2>당신의 새로운 시도가,<br />누군가에게 닿기 시작합니다.</h2><p>당신은 필요한 반응과 조건만 남기면 됩니다. 내용을 확인한 사람이 스스로 선택해 참여합니다.</p></div></section>
+    <section class="section" id="actions"><div class="container"><p class="section-label">Small requests</p><h2 class="section-title">당신의 새로운 시작을,<br />가볍게 보여주세요.</h2><p class="section-description">링크 하나, 파일 하나, 짧은 참여 하나. 당신이 원하는 첫 반응과 조건만 남기면, 내용을 확인한 사람이 스스로 참여합니다.</p><div class="actions"><article class="action"><p class="number">REQUEST 01</p><h3>처음 만든 페이지를<br />보여주고 싶을 때</h3><p>새로 만든 페이지나 콘텐츠를 확인해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 02</p><h3>앱을 처음 경험해 볼<br />사람이 필요할 때</h3><p>앱, 자료, 파일을 직접 받아보고 시작해 줄 사람이 필요할 때.</p></article><article class="action"><p class="number">REQUEST 03</p><h3>당신의 소식을<br />처음 전하고 싶을 때</h3><p>관심 있는 채널이나 계정에 새로운 소식을 전하고 싶을 때.</p></article><article class="action"><p class="number">REQUEST 04</p><h3>짧은 피드백의<br />시작이 필요할 때</h3><p>체험, 신청, 설문, 이벤트처럼 짧은 참여가 필요할 때.</p></article></div></div></section>
+    <section class="section" id="how"><div class="container flow-layout"><div class="flow-intro"><p class="section-label">Post and start</p><h2>당신의 첫걸음을<br />짧게 남기고,<br />시작하세요.</h2><p class="section-description">복잡한 설정, 견적 비교, 채팅 조율 없이 원하는 첫 반응과 조건만 짧게 남기세요. 내용을 확인한 사람이 스스로 참여를 선택합니다.</p><div class="button-row"><a class="button primary" href="#start">첫 반응 요청하기</a></div></div><div><div class="flow-list"><article class="flow-item"><p class="number">01</p><div><h3>원하는 첫 반응을 고릅니다.</h3><p>링크 확인, 파일 받기, 소식 연결, 간단 참여 중 당신에게 필요한 일을 고릅니다.</p></div></article><article class="flow-item"><p class="number">02</p><div><h3>링크와 필요한 조건을 남깁니다.</h3><p>링크 또는 파일과 함께, 참여에 필요한 내용을 짧게 적습니다.</p></div></article><article class="flow-item"><p class="number">03</p><div><h3>내용을 확인한 사람이 참여합니다.</h3><p>참여자는 요청과 조건을 확인한 뒤, 직접 참여 여부를 선택합니다.</p></div></article><article class="flow-item"><p class="number">04</p><div><h3>첫 반응의 흐름을 확인합니다.</h3><p>요청의 진행 상황과 완료 여부를 한곳에서 봅니다.</p></div></article></div><div class="request-card"><header><span>작은 요청 예시</span><span>1분 작성</span></header><div><span>요청할 일</span><strong>앱 한 번 받아보기</strong></div><div><span>링크 또는 파일</span><strong>앱 다운로드 링크</strong></div><div><span>필요한 참여</span><strong>30건</strong></div><div>필요한 일과 짧은 조건만 남기면 됩니다.</div></div></div></div></section>
+    <section class="section"><div class="container principle-layout"><div class="visual-placeholder"><div class="placeholder-copy"><span>IMAGE PLACEHOLDER / 참여자가 내용을 확인하고 스스로 선택하는 장면을 담은 흑백 사진 또는 그래픽. 숫자나 광고성과보다 ‘분명하고 가벼운 참여’를 우선합니다.</span><strong>요청은 분명하게.<br />참여는 가볍게.</strong></div></div><div><p class="section-label">Easy participation</p><h2 class="section-title">당신의 요청도,<br />참여하는 사람의 선택도<br />존중하도록.</h2><p class="section-description">첫 반응은 숫자만으로 만들어지지 않습니다. 요청은 분명하게, 참여는 충분한 정보를 바탕으로 자율적으로 이루어져야 합니다.</p><ul class="principles"><li><strong>무엇을 원하는지 분명하게</strong><span>필요한 행동, 참여 기준, 기간과 규모를 미리 확인합니다.</span></li><li><strong>참여 여부는 스스로 선택하게</strong><span>참여자가 내용을 확인하고 직접 참여 여부를 선택합니다.</span></li><li><strong>신뢰를 해치는 요청은 막고</strong><span>허위·부적절하거나 정책에 맞지 않는 요청은 제한될 수 있습니다.</span></li><li><strong>진행은 모두가 확인할 수 있게</strong><span>요청자와 참여자가 완료 흐름을 확인할 수 있습니다.</span></li></ul></div></div></section>
+    <section class="section cta" id="start"><div class="container"><p class="section-label">Post a request</p><h2>당신의 새로운 시작을,<br />오늘 누군가에게<br />보여주세요.</h2><p class="section-description">링크 하나와 짧은 조건이면 충분합니다. 처음의 반응이 필요할 때, 가볍게 시작해 보세요.</p><div class="button-row"><a class="button primary" href="#how">첫 반응 요청하기</a><a class="button" href="./index.html">틈틈 일반 요청 보기</a></div></div></section>
   </main>
   <footer><div class="container">TUMTUM AD+ / Small requests landing page wireframe</div></footer>
-  <script>
-    const revealTargets = document.querySelectorAll(".section > .container > *, .action, .flow-item, .principles li");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    revealTargets.forEach((target) => {
-      const position = Array.from(target.parentElement.children).indexOf(target);
-      target.dataset.reveal = "";
-      target.style.transitionDelay = `${Math.min(position, 4) * 90}ms`;
-    });
-
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      revealTargets.forEach((target) => target.classList.add("is-visible"));
-    } else {
-      const observer = new IntersectionObserver((entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          currentObserver.unobserve(entry.target);
-        });
-      }, { threshold: 0.08, rootMargin: "0px 0px -4%" });
-
-      revealTargets.forEach((target) => observer.observe(target));
-    }
-  </script>
+  <script src="./scripts.js"></script>
 </body>
 </html>
