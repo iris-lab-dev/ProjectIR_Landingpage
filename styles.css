@@ -1,5 +1,5 @@
-@font-face { font-family: "ONE Mobile Title"; src: url("../ProjectIR_Frontend/assets/fonts/ONE-Mobile-Title.ttf") format("truetype"); font-display: swap; }
-@font-face { font-family: "ONE Mobile Body"; src: url("../ProjectIR_Frontend/assets/fonts/ONE-Mobile-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "ONE Mobile Title"; src: url("./assets/fonts/ONE-Mobile-Title.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "ONE Mobile Body"; src: url("./assets/fonts/ONE-Mobile-Regular.woff") format("woff"); font-display: swap; }
 
 :root { --black: #111; --white: #fff; --gray: #686868; --soft: #f1f1ef; --line: #111; --ink: #181718; --canvas: #ffffff; --muted: #747474; --surface: #f6f6f6; --outline: #e5e5e5; --outline-strong: #d4d4d4; --max-width: 800px; --radius-button: 8px; --radius-card: 10px; }
 * { box-sizing: border-box; }
