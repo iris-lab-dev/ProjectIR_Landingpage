@@ -1,3 +1,9 @@
+const ctaLinks = {
+  request: { header: "https://demo.tumtum.kr", hero: "https://demo.tumtum.kr", footer: "https://demo.tumtum.kr" },
+  perform: { header: "https://demo.tumtum.kr", hero: "https://demo.tumtum.kr", footer: "https://demo.tumtum.kr" },
+  start: { header: "https://demo.tumtum.kr", hero: "https://demo.tumtum.kr", footer: "https://demo.tumtum.kr" },
+};
+
 const siteHeaderTemplate = document.createElement("template");
 siteHeaderTemplate.innerHTML = `
   <header class="site-header">
@@ -19,7 +25,7 @@ function renderSiteLayout() {
     const header = siteHeaderTemplate.content.cloneNode(true);
     const cta = header.querySelector("[data-header-cta]");
     cta.textContent = placeholder.dataset.ctaLabel;
-    cta.href = placeholder.dataset.ctaHref;
+    cta.href = ctaLinks[placeholder.dataset.ctaType].header;
     placeholder.replaceWith(header);
   });
 
@@ -30,6 +36,11 @@ function renderSiteLayout() {
 
 function init() {
   renderSiteLayout();
+
+  document.querySelectorAll("[data-cta-link]").forEach((cta) => {
+    const [type, placement] = cta.dataset.ctaLink.split(".");
+    cta.href = ctaLinks[type][placement];
+  });
 
   const revealTargets = document.querySelectorAll(
     ".section > .container > *, .situation, .example, .action, .flow-item, .principles li"
